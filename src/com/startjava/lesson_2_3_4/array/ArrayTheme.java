@@ -6,7 +6,7 @@ public class ArrayTheme {
         int[] intArray = {1, 7, 2, 6, 3, 5, 4};
         int len = intArray.length;
         show(intArray);
-        for (int i = 0; i <= len / 2; i++) {
+        for (int i = 0; i < len; i++) {
             len--;
             int temp = intArray[i];
             intArray[i] = intArray[len];
