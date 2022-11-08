@@ -7,9 +7,8 @@ public class ArrayTheme {
         int len = intArray.length;
         show(intArray);
         for (int i = 0; i < len; i++) {
-            len--;
             int temp = intArray[i];
-            intArray[i] = intArray[len];
+            intArray[i] = intArray[--len];
             intArray[len] = temp;
         }
         show(intArray);
@@ -35,10 +34,10 @@ public class ArrayTheme {
             doubleArray[i] = Math.random();
         }
         show(doubleArray);
-        double midleArray = doubleArray[len / 2];
+        double middleNum = doubleArray[len / 2];
         int count = 0;
         for (int i = 0; i < len; i++) {
-            if (midleArray > doubleArray[i]) {
+            if (middleNum > doubleArray[i]) {
                 doubleArray[i] = 0;
                 count++;
             }
@@ -53,27 +52,23 @@ public class ArrayTheme {
         for (int i = 0; i < len; i++) {
             alphabet[i] = (char) ('A' + i);
         }
-        String str = "";
+        StringBuilder builder = new StringBuilder();
         for (int i = 25; i >= 0; i--) {
-            str += alphabet[i];
-            System.out.println(str);
+            System.out.println(builder.append(alphabet[i]));
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
         intArray = new int[30];
         len = intArray.length;
+        int num = 60;
         for (int i = 0; i < len; i++) {
-            boolean uniqueNum;
-            do {
-                intArray[i] = (int) (Math.random() * (100 - 60) + 60);
-                uniqueNum = true;
-                for (int j = 0; j < i; j++) {
-                    if (intArray[i] == intArray[j]) {
-                        uniqueNum = false;
-                        break;
-                    }
+            for (int j = 0; j < len; j++) {
+                if (intArray[j] == num) {
+                    num = (int) (Math.random() * (100 - 60) + 60);
+                    j = -1;
                 }
-            } while (!uniqueNum);
+            }
+            intArray[i] = num;
         }
         for (int i = 0; i < len - 1; i++) {
             for (int j = 0; j < len - i - 1; j++) {
@@ -92,32 +87,32 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6. Сдвиг элементов массива");
-        String[] stringArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        show(stringArray);
-        len = stringArray.length;
+        String[] srcArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        show(srcArray);
+        len = srcArray.length;
         count = 0;
-        for (String s : stringArray) {
-            if (!s.isBlank()) {
+        for (String str : srcArray) {
+            if (!str.isBlank()) {
                 count++;
             }
         }
-        String[] stringArray2 = new String[count];
+
+        String[] destArray = new String[count];
         int srcPos = 0;
         int destPos = 0;
         int i = 0;
         while (i < len) {
-            int newLen = 0;
-            while (!stringArray[i].isBlank()) {
-                newLen++;
+            count = 0;
+            while (!srcArray[i].isBlank()) {
+                count++;
                 i++;
             }
-            System.arraycopy(stringArray, srcPos, stringArray2, destPos, newLen);
+            System.arraycopy(srcArray, srcPos, destArray, destPos, count);
             i++;
             srcPos = i;
-            destPos += newLen;
+            destPos += count;
         }
-        show(stringArray2);
-        System.out.println("Количество пустых строк - " + (len - count));
+        show(destArray);
     }
 
     private static void show(int[] array) {
