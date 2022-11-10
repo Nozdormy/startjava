@@ -19,21 +19,12 @@ public class CalculatorTest {
 	private static void start() {
 		Scanner scan = new Scanner(System.in);
 		Calculator calculator = new Calculator();
-		
-		System.out.print("Введите первое число: ");
-		// Считываю первое число с консоли и записывает его в num1
-		calculator.setNum1(scan.nextInt());
-		
-		System.out.print("Введите знак математической операции: ");
-		// Считываю знак математической операции и записывает его в sign
-		calculator.setSign(scan.next().charAt(0));
-		
-		System.out.print("Введите второе число: ");
-		// Считываю второе число с консоли и записывает его в num2
-		calculator.setNum2(scan.nextInt());
-		/* Вызываю метод который принимает 2 значения из консоли и производит вычисления 
-		 * в зависимости от знака мат. операции
-		 */
-		calculator.calculate();
+		System.out.print("Введите математическое выражение: ");
+		String str = scan.nextLine();
+		String[] words = str.split(" ");
+		calculator.setNum1(Integer.parseInt(words[0]));
+		calculator.setSign(words[1].charAt(0));
+		calculator.setNum2(Integer.parseInt(words[2]));
+		System.out.println(calculator.calculate());
 	}
 }

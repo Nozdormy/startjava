@@ -53,14 +53,14 @@ public class ArrayTheme {
             alphabet[i] = (char) ('A' + i);
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = 25; i >= 0; i--) {
+        for (int i = --len; i >= 0; i--) {
             System.out.println(builder.append(alphabet[i]));
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
         intArray = new int[30];
         len = intArray.length;
-        int num = 60;
+        int num = 0;
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 if (intArray[j] == num) {
