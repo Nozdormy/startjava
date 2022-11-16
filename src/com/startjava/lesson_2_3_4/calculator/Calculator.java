@@ -11,14 +11,14 @@ public class Calculator {
             throw new IllegalStateException("Введите положительные числа");
         } else {
             return switch (sign) {
-            case '+' -> Math.addExact(num1, num2);
-            case '-' -> Math.subtractExact(num1, num2);
-            case '*' -> Math.multiplyExact(num1, num2);
-            case '/' -> Math.floorDiv(num1, num2);
-            case '%' -> Math.floorMod(num1, num2);
-            case '^' -> (int) Math.pow(num1, num2);
-            default -> throw new IllegalStateException ("Неверный символ математической операции");
-        };
+                case '+' -> Math.addExact(num1, num2);
+                case '-' -> Math.subtractExact(num1, num2);
+                case '*' -> Math.multiplyExact(num1, num2);
+                case '/' -> Math.floorDiv(num1, num2);
+                case '%' -> Math.floorMod(num1, num2);
+                case '^' -> (int) Math.pow(num1, num2);
+                default -> throw new IllegalStateException("Неверный символ математической операции");
+            };
         }
     }
 }
