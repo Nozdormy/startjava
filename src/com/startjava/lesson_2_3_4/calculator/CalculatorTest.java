@@ -18,8 +18,8 @@ public class CalculatorTest {
 
     private static void launchСalculate() {
         Scanner scan = new Scanner(System.in);
+        System.out.print("Введите математическое выражение: ");
         try {
-            System.out.print("Введите математическое выражение: ");
             System.out.println(Calculator.calculate(scan.nextLine()));
         } catch (NumberFormatException e) {
             System.out.println("Введите корректные значения");

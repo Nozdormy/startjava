@@ -9,8 +9,8 @@ public class Calculator {
         int num2 = Integer.parseInt(partsExpression[2]);
         if (num1 < 1 || num2 < 1) {
             throw new IllegalStateException("Введите положительные числа");
-        } else {
-            return switch (sign) {
+        }
+        return switch (sign) {
                 case '+' -> Math.addExact(num1, num2);
                 case '-' -> Math.subtractExact(num1, num2);
                 case '*' -> Math.multiplyExact(num1, num2);
@@ -18,7 +18,6 @@ public class Calculator {
                 case '%' -> Math.floorMod(num1, num2);
                 case '^' -> (int) Math.pow(num1, num2);
                 default -> throw new IllegalStateException("Неверный символ математической операции");
-            };
-        }
+        };
     }
 }
