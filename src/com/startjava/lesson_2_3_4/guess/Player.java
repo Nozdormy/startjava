@@ -5,22 +5,22 @@ import java.util.Arrays;
 public class Player {
     private String name;
     private int attempt;
-    private int[] numbersArray = new int[GuessNumber.attempts];
+    private int[] enteredNums = new int[GuessNumber.ATTEMPTS];
 
     public Player(String name) {
         this.name = name;
     }
 
-    public int[] getNumbersArray() {
-        return Arrays.copyOf(numbersArray, numbersArray.length);
+    public int[] getEnteredNums() {
+        return Arrays.copyOf(enteredNums, attempt);
     }
 
     public int getAttempt() {
         return attempt;
     }
 
-    public void setAttempt(int attempt) {
-        this.attempt = attempt;
+    public void setAttempt() {
+        this.attempt++;
     }
 
     public String getName() {
@@ -28,15 +28,15 @@ public class Player {
     }
 
     public int getNumber() {
-        return numbersArray[attempt - 1];
+        return enteredNums[attempt - 1];
     }
 
-    public void fillArray(int number) {
-        numbersArray[attempt] = number;
+    public void addNum(int number) {
+        enteredNums[attempt] = number;
     }
 
     public void clean() {
-        Arrays.fill(numbersArray, 0, attempt, 0);
+        Arrays.fill(enteredNums, 0, attempt, 0);
         attempt = 0;
     }
 }
