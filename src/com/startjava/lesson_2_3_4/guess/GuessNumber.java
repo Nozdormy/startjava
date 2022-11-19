@@ -23,10 +23,13 @@ public class GuessNumber {
             if (compareNumbers(player1)) {
                 break;
             }
+            attemptsTotal(player1);
+
             inputNum(player2);
             if (compareNumbers(player2)) {
                 break;
             }
+            attemptsTotal(player2);
         } while (player2.getAttempt() < ATTEMPTS);
         printEnteredNums(player1);
         printEnteredNums(player2);
@@ -37,11 +40,9 @@ public class GuessNumber {
     private void inputNum(Player player) {
         System.out.println(player.getName() + " введите число");
         player.addNum(scan.nextInt());
-        attemptsTotal(player);
     }
 
     private void attemptsTotal(Player player) {
-        player.setAttempt();
         if (player.getAttempt() == ATTEMPTS) {
             System.out.println("У " + player.getName() + " закончились попытки");
         }
@@ -64,7 +65,7 @@ public class GuessNumber {
     private void printEnteredNums(Player player) {
         System.out.print("Числа введенные игроком " + player.getName() + " - ");
         for (int num : player.getEnteredNums()) {
-                System.out.print(num + " ");
+            System.out.print(num + " ");
         }
         System.out.println();
     }

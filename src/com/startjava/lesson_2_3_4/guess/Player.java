@@ -19,10 +19,6 @@ public class Player {
         return attempt;
     }
 
-    public void setAttempt() {
-        this.attempt++;
-    }
-
     public String getName() {
         return name;
     }
@@ -33,6 +29,7 @@ public class Player {
 
     public void addNum(int number) {
         enteredNums[attempt] = number;
+        attempt++;
     }
 
     public void clean() {
