@@ -6,7 +6,7 @@ public class GuessNumber {
     Scanner scan = new Scanner(System.in);
     private Player[] players;
     public static final int ATTEMPTS = 10;
-    public static final int ROUNDS = 3;
+    private static final int ROUNDS = 3;
     private int randomNum;
 
     public GuessNumber(Player... players) {
@@ -46,6 +46,20 @@ public class GuessNumber {
         printNameWinner();
     }
 
+    private void castLots() {
+        System.out.println("Угадай число");
+        for (int i = players.length - 1; i > 0; i--) {
+            randomNum = (int) (Math.random() * i);
+            Player temp = players[randomNum];
+            players[randomNum] = players[i];
+            players[i] = temp;
+        }
+        int i = 1;
+        for (Player player : players) {
+            System.out.println(i++ + "-ой игрок - " + player.getName());
+        }
+    }
+
     private void inputNum(Player player) {
         do {
             System.out.println(player.getName() + " введите число");
@@ -70,20 +84,6 @@ public class GuessNumber {
             System.out.print(num + " ");
         }
         System.out.println();
-    }
-
-    private void castLots() {
-        System.out.println("Угадай число");
-        for (int i = players.length - 1; i > 0; i--) {
-            randomNum = (int) (Math.random() * i);
-            Player temp = players[randomNum];
-            players[randomNum] = players[i];
-            players[i] = temp;
-        }
-        int i = 1;
-        for (Player player : players) {
-            System.out.println(i++ + "-ой игрок - " + player.getName());
-        }
     }
 
     private void printNameWinner() {
